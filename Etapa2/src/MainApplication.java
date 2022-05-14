@@ -5,10 +5,8 @@ User
 Client
 Driver
 Restaurant
-Menu
 Food
 Order
-Delivery
 Review
 */
 
@@ -27,6 +25,9 @@ Creare Review Driver
 Creare comanda
 Vizualizare comenzi active pentru user
  */
+
+// TODO: add colectie sortata
+
 package src;
 import src.service.AuditService;
 import src.service.Manager;
