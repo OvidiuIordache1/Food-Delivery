@@ -40,7 +40,8 @@ import java.util.Scanner;
 public class MainApplication {
 
     static List<String> interogari = Arrays.asList("create_client", "create_driver", "login", "show_logged_in_user", "add_address",
-            "create_restaurant", "create_review_restaurant", "create_review_driver", "show_restaurants", "show_menu_restaurant",
+            "create_restaurant", "create_review_restaurant", "create_review_driver", "show_restaurants", 
+	    "show_restaurants_by_reviews", "show_menu_restaurant",
             "show_reviews_restaurant", "add_order", "close");
 
     private static void printCommands() {
@@ -70,6 +71,7 @@ public class MainApplication {
                     case "create_review_restaurant" -> manager.creareReviewRestaurant();
                     case "create_review_driver" -> manager.creareReviewDriver();
                     case "show_restaurants" -> manager.afisareRestaurante();
+                    case "show_restaurants_by_reviews" -> manager.afisareRestauranteDupaReviews();
                     case "show_menu_restaurant" -> manager.afisareMeniuRestaurant();
                     case "show_reviews_restaurant" -> manager.afisareReviewsRestaurant();
                     case "add_order" -> manager.creareOrder();

@@ -2,6 +2,7 @@ package src.service;
 
 import src.model.*;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Manager {
@@ -24,6 +25,7 @@ public class Manager {
     private List<Food> foods;
     private List<Restaurant> restaurants;
     private List<Review> reviews;
+    TreeMap<Restaurant, Integer>  orderedRestaurants = new TreeMap<Restaurant, Integer>(new RestaurantAvgRev());
 
     public Manager() {
         addressCsvService = AddressCsvService.getInstance();
@@ -52,6 +54,10 @@ public class Manager {
 
         restaurantCsvService.getRestaurantsFromCsv(adrese, foods, reviews);
         restaurants = restaurantCsvService.getRestaurants();
+
+	for (Restaurant restaurant : restaurants) {
+            orderedRestaurants.put(restaurant, restaurant.getRestaurantId_());
+        }
     }
 
 
@@ -152,6 +158,23 @@ public class Manager {
                 System.out.println(i + ". " + restaurant);
                 i += 1;
             }
+        }
+        else {
+            System.out.println("Nu exista restaurante.");
+        }
+    }
+
+    public void afisareRestauranteDupaReviews() {
+        Scanner in = new Scanner(System.in);
+        if (orderedRestaurants.size() > 0) {
+            int i = 1;
+            System.out.println("Introdu nr. de restaurante : (din " + orderedRestaurants.size() + ")");
+            int nr = in.nextInt();
+            while (i <= nr)
+                for (Restaurant restaurant: orderedRestaurants.keySet()) {
+                    System.out.println(i + ". " + restaurant);
+                    i += 1;
+                }
         }
         else {
             System.out.println("Nu exista restaurante.");
